@@ -1,5 +1,6 @@
 package com.smoothstack.utopia.orchestrator.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -8,29 +9,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringCloudConfig {
 
+    @Autowired
+    private EnvConfig envConfig;
+
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/api/flights/**")
-                        .filters(f -> f
-                                .addRequestHeader("first-request", "first-request-header")
-                                .addResponseHeader("first-response", "first-response-header"))
-                        .uri("http://localhost:8081/"))
+                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getFlightsPort() + "/"))
                 .route(r -> r.path("/api/user/**")
-                        .filters(f -> f
-                                .addRequestHeader("first-request", "first-request-header")
-                                .addResponseHeader("first-response", "first-response-header"))
-                        .uri("http://localhost:8082/"))
+                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getUsersPort() + "/"))
                 .route(r -> r.path("/api/booking/**")
-                        .filters(f -> f
-                                .addRequestHeader("first-request", "first-request-header")
-                                .addResponseHeader("first-response", "first-response-header"))
-                        .uri("http://localhost:8083/"))
+                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getBookingsPort() + "/"))
                 .route(r -> r.path("/api/auth/**")
-                        .filters(f -> f
-                                .addRequestHeader("first-request", "first-request-header")
-                                .addResponseHeader("first-response", "first-response-header"))
-                        .uri("http://localhost:8084/"))
+                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getAuthPort() + "/"))
                 .build();
     }
 }
