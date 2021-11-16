@@ -16,13 +16,13 @@ public class SpringCloudConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/api/flights/**")
-                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getFlightsPort() + "/"))
+                        .uri("http://" + envConfig.getFlightUri() + ":" + envConfig.getFlightsPort() + "/"))
                 .route(r -> r.path("/api/user/**")
-                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getUsersPort() + "/"))
+                        .uri("http://" + envConfig.getUserUri() + ":" + envConfig.getUsersPort() + "/"))
                 .route(r -> r.path("/api/booking/**")
-                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getBookingsPort() + "/"))
+                        .uri("http://" + envConfig.getBookingUri() + ":" + envConfig.getBookingsPort() + "/"))
                 .route(r -> r.path("/api/auth/**")
-                        .uri("http://" + envConfig.getUri() + ":" + envConfig.getAuthPort() + "/"))
+                        .uri("http://" + envConfig.getAuthUri() + ":" + envConfig.getAuthPort() + "/"))
                 .build();
     }
 }

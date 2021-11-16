@@ -22,7 +22,15 @@ public class EnvConfig {
     @Value("${auth.port}")
     private String authPort;
 
-    @Value("${uri}")
-    private String uri;
+    @Value("#{'${uri}'.equals('null') ? 'auth' : '${uri}'}")
+    private String authUri;
 
+    @Value("#{'${uri}'.equals('null') ? 'booking' : '${uri}'}")
+    private String bookingUri;
+
+    @Value("#{'${uri}'.equals('null') ? 'flight' : '${uri}'}")
+    private String flightUri;
+
+    @Value("#{'${uri}'.equals('null') ? 'user' : '${uri}'}")
+    private String userUri;
 }
