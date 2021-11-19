@@ -10,27 +10,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class EnvConfig {
 
-    @Value("${flights.port}")
-    private String flightsPort;
+    @Value("${flight.port}")
+    private String flightPort;
 
-    @Value("${users.port}")
-    private String usersPort;
+    @Value("${user.port}")
+    private String userPort;
 
-    @Value("${bookings.port}")
-    private String bookingsPort;
+    @Value("${booking.port}")
+    private String bookingPort;
 
     @Value("${auth.port}")
     private String authPort;
 
-    @Value("#{'${uri}'.equals('null') ? 'auth' : '${uri}'}")
+    @Value("${auth.uri}")
     private String authUri;
 
-    @Value("#{'${uri}'.equals('null') ? 'booking' : '${uri}'}")
+    @Value("${booking.uri}")
     private String bookingUri;
 
-    @Value("#{'${uri}'.equals('null') ? 'flight' : '${uri}'}")
+    @Value("${flight.uri}")
     private String flightUri;
 
-    @Value("#{'${uri}'.equals('null') ? 'user' : '${uri}'}")
+    @Value("${user.uri}")
     private String userUri;
 }
