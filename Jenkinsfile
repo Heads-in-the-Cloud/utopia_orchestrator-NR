@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         UTOPIA_MICROSERVICE_ORCHESTRATOR_PORT=credentials('orchestrator_port')
-        UTOPIA_MICROSERVICE_USERS_PORT=credentials('flights_port')
+        UTOPIA_MICROSERVICE_FLIGHTS_PORT=credentials('flights_port')
         UTOPIA_MICROSERVICE_AUTH_PORT=credentials('auth_port')
         UTOPIA_MICROSERVICE_USERS_PORT=credentials('users_port')
         UTOPIA_MICROSERVICE_BOOKINGS_PORT=credentials('bookings_port')
